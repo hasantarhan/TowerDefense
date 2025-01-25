@@ -1,0 +1,11 @@
+{
+  "name": "com.redaxegames.ra_utilities",
+  "version": "1.0.0",
+  "displayName": "RA Utilities",
+  "description": "Utilities package",
+  "unity": "2019.1",
+  "author": {
+    "name": "Red Axe Games",
+    "url": "https://www.redaxegames.com"
+  }
+}
