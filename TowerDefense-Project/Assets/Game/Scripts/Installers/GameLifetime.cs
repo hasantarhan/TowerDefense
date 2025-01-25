@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using Game.Domain;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 namespace Game
 {
     public class GameLifetime : LifetimeScope
     {
-        [SerializeField] private Spawner spawner;
+        [FormerlySerializedAs("spawner")]
+        [SerializeField] private EnemySpawner enemySpawner;
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private TowerPlacementController towerPlacementController;
 
@@ -20,7 +22,7 @@ namespace Game
         public TowerConfig[] towerConfigs;
         protected override void Configure(IContainerBuilder builder)
         {
-            builder.RegisterComponent(spawner)
+            builder.RegisterComponent(enemySpawner)
                 .As<ISpawner>()
                 .AsSelf();
             builder.Register<EnemyFactory>(Lifetime.Singleton)
@@ -29,8 +31,8 @@ namespace Game
 
             builder.RegisterComponent(towerPlacementController)
                 .AsSelf();
-
-         
+            
+            
             var towerPrefabs = new Dictionary<Type, GameObject>
             {
                 { typeof(BasicTower), basicTowerPrefab },
@@ -38,6 +40,8 @@ namespace Game
                 { typeof(FastTower), fastTowerPrefab }
             };
 
+
+     //       builder.RegisterComponent(enemyPrefab).As<IEnemyFactory>();
          
             builder.Register<TowerFactory>(Lifetime.Singleton)
                 .WithParameter(towerPrefabs)

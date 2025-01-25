@@ -1,31 +1,38 @@
 using Game.Domain;
 using UnityEngine;
+using VContainer;
+
 namespace Game
 {
-    public class Enemy : MonoBehaviour,IEnemy
+    public class Enemy : MonoBehaviour, IEnemy
     {
-        [SerializeField] private float health = 10f;
-        public float Health => health;
-        public bool IsAlive => health > 0;
+        public float Health { get; set; }
+        public bool IsAlive => Health > 0;
+        private IEnemyFactory enemyFactory;
+
+        [Inject]
+        public void Construct(IEnemyFactory poolingFactory)
+        {
+            enemyFactory = poolingFactory;
+        }
 
         public void Initialize()
         {
-            health = 10f;
-            Debug.Log("Hello");
+            Health = 10f;
         }
 
         public void TakeDamage(float amount)
         {
-            health -= amount;
-            if (!IsAlive)
+            Health -= amount;
+            if (Health <= 0)
             {
                 Die();
             }
         }
-
+        
         private void Die()
         {
-            Destroy(gameObject);
+            enemyFactory.ReleaseEnemy(this);
         }
     }
 }

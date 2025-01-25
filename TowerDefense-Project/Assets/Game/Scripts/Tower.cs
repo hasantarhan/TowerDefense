@@ -26,7 +26,7 @@ namespace Game
             Physics.OverlapSphereNonAlloc(transform.position, range, results);
             foreach (var hit in results)
             {
-                if (hit.TryGetComponent<IEnemy>(out var enemy))
+                if (hit !=null && hit.TryGetComponent<IEnemy>(out var enemy))
                 {
                     Attack(enemy);
                     break;

@@ -4,7 +4,7 @@ using UnityEngine;
 using VContainer;
 namespace Game
 {
-    public class Spawner : MonoBehaviour,ISpawner
+    public class EnemySpawner : MonoBehaviour,ISpawner
     {
         [SerializeField] 
         private float spawnInterval = 2f;

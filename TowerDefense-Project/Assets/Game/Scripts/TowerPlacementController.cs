@@ -10,6 +10,7 @@ public class TowerPlacementController : MonoBehaviour
     private ITowerFactory towerFactory;
     private Dictionary<KeyCode, Action<Vector3>> towerSpawnActions;
     private Action<Vector3> selectedSpawnAction;
+    private Camera camera;
     [Inject]
     public void Construct(ITowerFactory towerFactory)
     {
@@ -18,6 +19,7 @@ public class TowerPlacementController : MonoBehaviour
 
     private void Awake()
     {
+        camera = Camera.main;
         towerSpawnActions = new Dictionary<KeyCode, Action<Vector3>>
         {
             { KeyCode.Alpha1, pos => towerFactory.CreateTower<BasicTower>(pos) },
@@ -48,7 +50,7 @@ public class TowerPlacementController : MonoBehaviour
 
     private Vector3 GetSpawnPosition()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 100f))
         {
             return hit.point;
