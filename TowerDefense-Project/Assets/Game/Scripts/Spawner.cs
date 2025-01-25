@@ -1,6 +1,7 @@
 using System;
 using Game.Domain;
 using UnityEngine;
+using VContainer;
 namespace Game
 {
     public class Spawner : MonoBehaviour,ISpawner
@@ -11,7 +12,7 @@ namespace Game
         private float timer;
         private bool spawningActive;
         
-        [VContainer.Inject]
+        [Inject]
         public void Construct(IEnemyFactory enemyFactory)
         {
             this.enemyFactory = enemyFactory;

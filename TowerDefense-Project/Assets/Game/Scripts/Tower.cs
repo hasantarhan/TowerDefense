@@ -2,16 +2,15 @@ using Game.Domain;
 using UnityEngine;
 namespace Game
 {
-    public class Tower : MonoBehaviour,ITower
+    public abstract class Tower : MonoBehaviour,ITower
     {
         [SerializeField] private float range = 5f;
         [SerializeField] private float damage = 2f;
-
         public float Range => range;
         public float Damage => damage;
 
         private Collider[] results = new Collider[100];
-        public void Attack(IEnemy enemy)
+        public virtual void Attack(IEnemy enemy)
         {
             if (enemy == null || !enemy.IsAlive) return;
             
