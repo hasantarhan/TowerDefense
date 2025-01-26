@@ -49,7 +49,7 @@ namespace Game
                 currentWaveIndex++;
                 if (currentWaveIndex >= waveConfigs.Length)
                 {
-                    enabled = false;
+                    enabled = false;    
                 }
             }
         }
