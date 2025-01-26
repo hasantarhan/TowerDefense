@@ -15,7 +15,11 @@ namespace Game
         {
             this.path = path;
             currentWaypointIndex = 0;
-
+        }
+        private void OnEnable()
+        {
+            currentWaypointIndex = 0;
+            transform.position = path.GetPoint(currentWaypointIndex);
         }
         private void Start()
         {

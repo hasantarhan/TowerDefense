@@ -1,25 +1,21 @@
 using System.Collections.Generic;
+using Game.Domain;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
 namespace Game
 {
-    public interface ITowerFactory
-    {
-        void CreateTower(TowerConfig.TowerType type, Vector3 position);
-    }
+
 
     public class TowerFactory : ITowerFactory
     {
         private readonly IObjectResolver container;
         private readonly Dictionary<TowerConfig.TowerType, TowerConfig> configs;
-        private readonly GameObject towerPrefab;
 
-        public TowerFactory(IObjectResolver container, GameObject towerPrefab, TowerConfig[] towerConfigs)
+        public TowerFactory(IObjectResolver container, TowerConfig[] towerConfigs)
         {
             this.container = container;
-            this.towerPrefab = towerPrefab;
             
             configs = new Dictionary<TowerConfig.TowerType, TowerConfig>();
             foreach (var config in towerConfigs)

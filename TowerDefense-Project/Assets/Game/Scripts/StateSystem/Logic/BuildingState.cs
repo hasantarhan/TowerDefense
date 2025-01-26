@@ -6,8 +6,6 @@ namespace Game
     public class BuildingState : IGameState
     {
         private readonly TowerPlacementController towerPlacement;
-    
-
         [Inject]
         public BuildingState(TowerPlacementController towerPlacement)
         {

@@ -5,7 +5,6 @@ using Game.Domain;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using VContainer;
-using ITowerFactory = Game.ITowerFactory;
 
 public class TowerPlacementController : MonoBehaviour
 {
@@ -21,6 +20,10 @@ public class TowerPlacementController : MonoBehaviour
 
     private void Update()
     {
+        if (!canPlacement)
+        {
+            return;
+        }
         HandleTowerSelection();
         HandlePlacement();
     }

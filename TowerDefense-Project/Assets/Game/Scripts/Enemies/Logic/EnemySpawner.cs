@@ -11,11 +11,13 @@ namespace Game
         private IEnemyFactory enemyFactory;
         private float timer;
         private bool spawningActive;
+        private Path path;
         
         [Inject]
-        public void Construct(IEnemyFactory enemyFactory)
+        public void Construct(IEnemyFactory enemyFactory, Path path)
         {
             this.enemyFactory = enemyFactory;
+            this.path = path;
         }
         public void StartSpawning()
         {
@@ -28,7 +30,7 @@ namespace Game
         }
         private void SpawnEnemy()
         {
-            enemyFactory.CreateEnemy(Vector3.zero);
+            enemyFactory.CreateEnemy(path.GetPoint(0));
         }
         private void Update()
         {

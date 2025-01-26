@@ -14,9 +14,9 @@ namespace Game
         
         [Header("Prefab References")]
         [SerializeField] private GameObject enemyPrefab;
-        [SerializeField] private GameObject basicTowerPrefab;
         
-        public TowerConfig[] towerConfigs;
+        [Header("Configurations")]
+        [SerializeField] private TowerConfig[] towerConfigs;
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponent(enemySpawner)
@@ -37,7 +37,6 @@ namespace Game
             builder.RegisterComponent(path).AsSelf();
             
             builder.Register<TowerFactory>(Lifetime.Singleton)
-                .WithParameter(basicTowerPrefab) 
                 .WithParameter(towerConfigs) 
                 .As<ITowerFactory>();
         }

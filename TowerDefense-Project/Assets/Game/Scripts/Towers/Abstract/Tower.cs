@@ -22,7 +22,6 @@ namespace Game
 
         public void Attack(IEnemy enemy)
         {
-            Debug.Log("Attack",gameObject);
             var bullet = Instantiate(config.BulletPrefab, transform.position, Quaternion.identity);
             bullet.Initialize(config.Damage, config.BulletSpeed, config.SlowPercentage);
             var direction = enemy.Position - transform.position;

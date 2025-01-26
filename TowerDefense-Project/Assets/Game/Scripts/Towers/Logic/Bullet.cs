@@ -31,7 +31,8 @@ namespace Game
         }
         public void Shoot(Vector3 direction)
         {
-            rb.AddForce( direction* speed, ForceMode.Impulse);
+            transform.forward = direction;
+            rb.AddForce(direction* speed, ForceMode.Impulse);
         }
     }
 }

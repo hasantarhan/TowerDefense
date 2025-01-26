@@ -24,6 +24,7 @@ namespace Game
         }
         private void Start()
         {
+            ShowStartButton();
             startButton.onClick.AddListener(StartSpawning);
         }
     }

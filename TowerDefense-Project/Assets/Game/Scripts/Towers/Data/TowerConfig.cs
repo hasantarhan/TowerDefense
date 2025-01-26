@@ -9,7 +9,6 @@ namespace Game
 
         [SerializeField] private TowerType type;
         [SerializeField] private Bullet bulletPrefab;
-        [FormerlySerializedAs("towerVisual")]
         [SerializeField] private GameObject towerPrefab;
         [SerializeField] private float damage;
         [SerializeField] private float bulletSpeed;
