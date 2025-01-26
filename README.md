@@ -1,8 +1,7 @@
 # Tower Defense Game - Technical Documentation
-
+![TDGameplay.gif](TDGameplay.gif)
 ## Overview
 A 3D tower defense game built with Unity, featuring modular tower placement, enemy waves, and state-driven gameplay. Utilizes VContainer for dependency injection and follows SOLID principles for scalable architecture.
-
 ## Key Features
 - **Tower System**: 3 tower types (Basic/Slow/Fast) with configurable stats
 - **Wave System**: ScriptableObject-based enemy wave configurations
