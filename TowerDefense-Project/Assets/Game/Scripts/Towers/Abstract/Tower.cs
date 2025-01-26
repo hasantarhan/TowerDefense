@@ -7,6 +7,7 @@ namespace Game
     {
         private TowerConfig config;
         private float fireTimer;
+        private Collider[] overlapResults = new Collider[50];
         public float Range => config.Range;
         public float Damage => config.Damage;
         
@@ -30,16 +31,16 @@ namespace Game
         
         public void OverlapCheckEnemy()
         {
-            var colliders = Physics.OverlapSphere(transform.position, config.Range);
+            int hitCount = Physics.OverlapSphereNonAlloc(transform.position, config.Range, overlapResults);
             IEnemy closestEnemy = null;
             float closestDistance = Mathf.Infinity;
 
-            foreach (var collider in colliders)
+            for (int i = 0; i < hitCount; i++)
             {
-                IEnemy enemy = collider.GetComponent<IEnemy>();
+                IEnemy enemy = overlapResults[i].GetComponent<IEnemy>();
                 if (enemy != null && enemy.IsAlive)
                 {
-                    float distance = Vector3.Distance(transform.position, collider.transform.position);
+                    float distance = Vector3.Distance(transform.position, overlapResults[i].transform.position);
                     if (distance < closestDistance)
                     {
                         closestDistance = distance;

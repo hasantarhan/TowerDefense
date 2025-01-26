@@ -15,8 +15,7 @@ MonoBehaviour:
   type: 0
   bulletPrefab: {fileID: 3061159245108117958, guid: e881951640d31964a9a76a18cad5c63e, type: 3}
   towerPrefab: {fileID: 819968159033824655, guid: 81e50e560b6aaf34484f7407f100149a, type: 3}
-  damage: 5
-  bulletSpeed: 15
-  range: 10
-  fireRate: 1
-  slowPercentage: 0
+  damage: 1
+  bulletSpeed: 10
+  range: 5
+  fireRate: 0.5
