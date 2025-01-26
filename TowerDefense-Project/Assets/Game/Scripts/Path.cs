@@ -7,8 +7,7 @@ namespace Game
 
     public class Path : MonoBehaviour
     {
-        public Transform[] waypoints;
-        public Vector3 GetFirstWaypoint() => waypoints[0].position;
+        private Transform[] waypoints;
         public bool HasReachedEnd(int index) => index >= waypoints.Length;
 
         private void Awake()
