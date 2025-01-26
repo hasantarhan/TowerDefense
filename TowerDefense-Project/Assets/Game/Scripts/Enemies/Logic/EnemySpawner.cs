@@ -1,5 +1,6 @@
 using System;
 using Game.Domain;
+using Game.Scripts.Enemies.Data;
 using UnityEngine;
 using VContainer;
 namespace Game
@@ -12,12 +13,14 @@ namespace Game
         private float timer;
         private bool spawningActive;
         private Path path;
+        private WaveConfig[] waveConfigs;
         
         [Inject]
-        public void Construct(IEnemyFactory enemyFactory, Path path)
+        public void Construct(IEnemyFactory enemyFactory, Path path, WaveConfig[] waveConfigs)
         {
             this.enemyFactory = enemyFactory;
             this.path = path;
+            this.waveConfigs = waveConfigs;
         }
         public void StartSpawning()
         {

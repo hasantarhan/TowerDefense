@@ -223,17 +223,16 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   enemySpawner: {fileID: 1445470965}
-  enemyPrefab: {fileID: 7770020043995976176, guid: b101d949270f0e444a501d1dfa0b15a1, type: 3}
-  towerPlacementController: {fileID: 1698158258}
-  basicTowerPrefab: {fileID: 819968159033824655, guid: 81e50e560b6aaf34484f7407f100149a, type: 3}
-  slowTowerPrefab: {fileID: 3943315768671630289, guid: 41290af9a449d7e40ae32710fcd32cd7, type: 3}
-  fastTowerPrefab: {fileID: 7071033847094095320, guid: 8c12f4ea47170404c99f46d56b8e29ca, type: 3}
   path: {fileID: 996113034}
+  towerPlacementController: {fileID: 1698158258}
   uiController: {fileID: 1572516251}
+  enemyPrefab: {fileID: 7770020043995976176, guid: b101d949270f0e444a501d1dfa0b15a1, type: 3}
   towerConfigs:
   - {fileID: 11400000, guid: d42cf48703c2da74dae8adce94f695de, type: 2}
   - {fileID: 11400000, guid: 67e4cfe8918c42f4d8782107747211d8, type: 2}
   - {fileID: 11400000, guid: 5a6dec64a3483f44f970096d65ab6df0, type: 2}
+  waveConfigs:
+  - {fileID: 11400000, guid: 7d1026a77142de24ba488f3a2d8a4e57, type: 2}
 --- !u!4 &385606212
 Transform:
   m_ObjectHideFlags: 0

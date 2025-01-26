@@ -1,4 +1,5 @@
 using Game.Domain;
+using Game.Scripts.Enemies.Data;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -17,13 +18,19 @@ namespace Game
         
         [Header("Configurations")]
         [SerializeField] private TowerConfig[] towerConfigs;
+        [SerializeField] private WaveConfig[] waveConfigs;
+
         protected override void Configure(IContainerBuilder builder)
         {
             builder.RegisterComponent(enemySpawner)
                 .As<ISpawner>()
-                .AsSelf();
+                .AsSelf()
+                .WithParameter(waveConfigs); 
+
+            
+   
             builder.Register<EnemyFactory>(Lifetime.Singleton)
-                .WithParameter(enemyPrefab)   
+                .WithParameter(enemyPrefab)
                 .As<IEnemyFactory>();
 
             builder.RegisterComponent(towerPlacementController)
