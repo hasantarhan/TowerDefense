@@ -41,7 +41,6 @@ namespace Game
             enemyObject.transform.position = spawnPosition;
             if (enemyObject.TryGetComponent<IEnemy>(out var enemy))
             {
-                enemy.Initialize();
                 return enemy;
             }
             

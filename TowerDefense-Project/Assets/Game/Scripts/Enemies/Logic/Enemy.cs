@@ -1,3 +1,4 @@
+using System;
 using Game.Domain;
 using UnityEngine;
 using VContainer;
@@ -6,19 +7,33 @@ namespace Game
 {
     public class Enemy : MonoBehaviour, IEnemy
     {
-        public float Health { get; set; }
+        private float maxHealth;
+        public float health = 10;
+        public float Health
+        {
+            get
+            {
+                return health;
+            }
+            set
+            {
+                health = value;
+            }
+        }
         public bool IsAlive => Health > 0;
         public Vector3 Position => transform.position;
+        public Action OnDie { get; set; }
         private IEnemyFactory enemyFactory;
 
         [Inject]
         public void Construct(IEnemyFactory poolingFactory)
         {
             enemyFactory = poolingFactory;
+            maxHealth = health;
         }
-        public void Initialize()
+        private void OnEnable()
         {
-            Health = 10f;
+            health = maxHealth;
         }
         public void TakeDamage(float amount)
         {
@@ -31,6 +46,7 @@ namespace Game
         private void Die()
         {
             enemyFactory.ReleaseEnemy(this);
+            OnDie?.Invoke();
         }
     }
 }

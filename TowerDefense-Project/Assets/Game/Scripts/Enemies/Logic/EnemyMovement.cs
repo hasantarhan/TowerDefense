@@ -6,7 +6,7 @@ namespace Game
     public class EnemyMovement : MonoBehaviour
     {
         private Path path;
-        public int currentWaypointIndex;
+        private int currentWaypointIndex;
         [SerializeField] private float speed = 3f;
         private const float distance = 0.1f;
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Game;
 using Game.Domain;
+using Game.Scripts.Common;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using VContainer;
@@ -10,17 +11,19 @@ public class TowerPlacementController : MonoBehaviour
 {
     private ITowerFactory towerFactory;
     private TowerConfig.TowerType selectedType = TowerConfig.TowerType.Basic;
-
+    private GameConfig gameConfig;
     private bool canPlacement = false;
+    private bool IsMaxTowerCount => gameConfig.runtimeGameData.TowerCount < gameConfig.maxTowerCount;
     [Inject]
-    public void Construct(ITowerFactory towerFactory)
+    public void Construct(ITowerFactory towerFactory, GameConfig gameConfig)
     {
         this.towerFactory = towerFactory;
+        this.gameConfig = gameConfig;
     }
 
     private void Update()
     {
-        if (!canPlacement)
+        if (!canPlacement || !IsMaxTowerCount)
         {
             return;
         }
@@ -39,19 +42,36 @@ public class TowerPlacementController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Vector3 spawnPos = GetSpawnPosition();
-            towerFactory.CreateTower(selectedType, spawnPos);
+            if (TryGetValidSpawnPosition(out Vector3 spawnPos))
+            {
+                towerFactory.CreateTower(selectedType, spawnPos);
+                gameConfig.runtimeGameData.TowerCount++;
+            }
         }
     }
-    private Vector3 GetSpawnPosition()
+    private bool TryGetValidSpawnPosition(out Vector3 position)
     {
+        position = Vector3.zero;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f, LayerMask.GetMask("Ground")))
         {
-            return hit.point;
+   
+            Collider[] pathColliders = Physics.OverlapBox(
+                hit.point, 
+                Vector3.one * 0.5f,
+                Quaternion.identity, 
+                LayerMask.GetMask("Path")
+            );
+            
+            if (pathColliders.Length == 0)
+            {
+                position = hit.point;
+                return true;
+            }
         }
-        return Vector3.zero;
+        return false;
     }
+
     public void EnablePlacement()
     {
         canPlacement = true;
@@ -61,5 +81,3 @@ public class TowerPlacementController : MonoBehaviour
         canPlacement = false;
     }
 }
-
-

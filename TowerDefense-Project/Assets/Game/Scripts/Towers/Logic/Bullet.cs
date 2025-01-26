@@ -7,18 +7,15 @@ namespace Game
     {
         [HideInInspector] public float damage;
         [HideInInspector] public float speed;
-        [HideInInspector] public float slowPercentage;
-
         private Rigidbody rb;
         private void Awake()
         {
             rb = GetComponent<Rigidbody>();
         }
-        public void Initialize(float damage, float speed, float slowPercentage)
+        public void Initialize(float damage, float speed)
         {
             this.damage = damage;
             this.speed = speed;
-            this.slowPercentage = slowPercentage;
         }
 
         private void OnTriggerEnter(Collider other)

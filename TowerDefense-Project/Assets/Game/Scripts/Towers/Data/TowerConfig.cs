@@ -14,7 +14,6 @@ namespace Game
         [SerializeField] private float bulletSpeed;
         [SerializeField] private float range;
         [SerializeField] private float fireRate;
-        [SerializeField] private float slowPercentage;
     
         public TowerType Type => type;
         public GameObject TowerPrefab => towerPrefab;
@@ -23,6 +22,5 @@ namespace Game
         public float BulletSpeed => bulletSpeed;
         public float Range => range;
         public float FireRate => fireRate;
-        public float SlowPercentage => slowPercentage;
     }
 }

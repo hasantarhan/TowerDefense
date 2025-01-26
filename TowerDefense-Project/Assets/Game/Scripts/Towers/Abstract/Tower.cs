@@ -23,7 +23,7 @@ namespace Game
         public void Attack(IEnemy enemy)
         {
             var bullet = Instantiate(config.BulletPrefab, transform.position, Quaternion.identity);
-            bullet.Initialize(config.Damage, config.BulletSpeed, config.SlowPercentage);
+            bullet.Initialize(config.Damage, config.BulletSpeed);
             var direction = enemy.Position - transform.position;
             bullet.Shoot(direction.normalized);
         }
@@ -31,13 +31,26 @@ namespace Game
         public void OverlapCheckEnemy()
         {
             var colliders = Physics.OverlapSphere(transform.position, config.Range);
+            IEnemy closestEnemy = null;
+            float closestDistance = Mathf.Infinity;
+
             foreach (var collider in colliders)
             {
-                var enemy = collider.GetComponent<IEnemy>();
-                if (enemy != null)
+                IEnemy enemy = collider.GetComponent<IEnemy>();
+                if (enemy != null && enemy.IsAlive)
                 {
-                    Attack(enemy);
+                    float distance = Vector3.Distance(transform.position, collider.transform.position);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestEnemy = enemy;
+                    }
                 }
+            }
+
+            if (closestEnemy != null)
+            {
+                Attack(closestEnemy);
             }
         }
         public void ApplyConfig(TowerConfig towerConfig)
