@@ -26,14 +26,15 @@ namespace Game
             gameConfig.runtimeGameData.OnDiedEnemyCountChanged += EnemyCountChanged;
             gameConfig.runtimeGameData.OnTowerCountChanged += OnTowerCountChanged;
         }
+        
         private void OnTowerCountChanged(int obj)
         {
-            towerCountText.text = $"{obj}/{gameConfig.maxTowerCount}";
+            towerCountText.text = $"Towers: {obj}/{gameConfig.maxTowerCount}";
         }
 
         private void EnemyCountChanged(int obj)
         {
-            enemyCountText.text = $"{obj}/ {gameConfig.runtimeGameData.WaveEnemyCount} ";
+            enemyCountText.text = $"Enemies: {obj}/ {gameConfig.runtimeGameData.WaveEnemyCount} ";
         }
         private void StartSpawning()
         {
@@ -42,6 +43,8 @@ namespace Game
         }
         private void Start()
         {
+            OnTowerCountChanged( gameConfig.runtimeGameData.TowerCount);
+            EnemyCountChanged(gameConfig.runtimeGameData.DiedEnemyCount);
             ShowStartButton();
             startButton.onClick.AddListener(StartSpawning);
         }
