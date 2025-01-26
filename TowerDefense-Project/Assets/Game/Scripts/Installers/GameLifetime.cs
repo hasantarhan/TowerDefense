@@ -1,25 +1,20 @@
-using System;
-using System.Collections.Generic;
 using Game.Domain;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 namespace Game
 {
     public class GameLifetime : LifetimeScope
     {
-        [FormerlySerializedAs("spawner")]
+        [Header("Game References")]
         [SerializeField] private EnemySpawner enemySpawner;
-        [SerializeField] private GameObject enemyPrefab;
-        [SerializeField] private TowerPlacementController towerPlacementController;
-
-        [Header("Tower Prefabs")]
-        [SerializeField] private GameObject basicTowerPrefab;
-        [SerializeField] private GameObject slowTowerPrefab;
-        [SerializeField] private GameObject fastTowerPrefab;
-        
         [SerializeField] private Path path;
+        [SerializeField] private TowerPlacementController towerPlacementController;
+        [SerializeField] private UIController uiController;
+        
+        [Header("Prefab References")]
+        [SerializeField] private GameObject enemyPrefab;
+        [SerializeField] private GameObject basicTowerPrefab;
         
         public TowerConfig[] towerConfigs;
         protected override void Configure(IContainerBuilder builder)
@@ -34,18 +29,16 @@ namespace Game
             builder.RegisterComponent(towerPlacementController)
                 .AsSelf();
             
+            builder.Register<BuildingState>(Lifetime.Singleton);
+            builder.Register<CombatState>(Lifetime.Singleton);
+            builder.Register<GameStateMachine>(Lifetime.Singleton).AsSelf();
             
-            var towerPrefabs = new Dictionary<Type, GameObject>
-            {
-                { typeof(BasicTower), basicTowerPrefab },
-                { typeof(SlowTower), slowTowerPrefab },
-                { typeof(FastTower), fastTowerPrefab }
-            };
-            
+            builder.RegisterComponent(uiController).AsSelf();
             builder.RegisterComponent(path).AsSelf();
             
             builder.Register<TowerFactory>(Lifetime.Singleton)
-                .WithParameter(towerPrefabs)
+                .WithParameter(basicTowerPrefab) 
+                .WithParameter(towerConfigs) 
                 .As<ITowerFactory>();
         }
     }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22177fd5bacc498b912edc4dc9870234, type: 3}
+  m_Name: SlowTower
+  m_EditorClassIdentifier: 
+  type: 1
+  bulletPrefab: {fileID: 3061159245108117958, guid: e881951640d31964a9a76a18cad5c63e, type: 3}
+  towerPrefab: {fileID: 3943315768671630289, guid: 41290af9a449d7e40ae32710fcd32cd7, type: 3}
+  damage: 1
+  bulletSpeed: 15
+  range: 10
+  fireRate: 1
+  slowPercentage: 0
