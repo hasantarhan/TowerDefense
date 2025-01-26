@@ -19,6 +19,8 @@ namespace Game
         [SerializeField] private GameObject slowTowerPrefab;
         [SerializeField] private GameObject fastTowerPrefab;
         
+        [SerializeField] private Path path;
+        
         public TowerConfig[] towerConfigs;
         protected override void Configure(IContainerBuilder builder)
         {
@@ -39,10 +41,9 @@ namespace Game
                 { typeof(SlowTower), slowTowerPrefab },
                 { typeof(FastTower), fastTowerPrefab }
             };
-
-
-     //       builder.RegisterComponent(enemyPrefab).As<IEnemyFactory>();
-         
+            
+            builder.RegisterComponent(path).AsSelf();
+            
             builder.Register<TowerFactory>(Lifetime.Singleton)
                 .WithParameter(towerPrefabs)
                 .As<ITowerFactory>();

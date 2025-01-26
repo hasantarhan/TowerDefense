@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
-namespace RedAxeGames.Extensions
+namespace Hasan.Extensions
 {
-    public static class RA_ListExtension 
+    public static class ListExtensions 
     {
         private static readonly Random Rand = new Random();
         public static T GetRandomItemToList<T>(this List<T> someList)

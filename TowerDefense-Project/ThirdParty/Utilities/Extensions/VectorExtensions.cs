@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace RedAxeGames.Extensions
+namespace Hasan.Extensions
 {
-    public static class RA_VectorExtension
+    public static class VectorExtensions
     {
         public static int GetRandomIntByVector2(this Vector2 vector) => Random.Range((int)vector.x, (int)vector.y);
         public static float GetRandomFloatByVector2(this Vector2 vector) => Random.Range(vector.x, vector.y);

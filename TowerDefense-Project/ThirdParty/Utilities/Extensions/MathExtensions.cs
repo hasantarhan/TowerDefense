@@ -1,6 +1,6 @@
 ﻿using System;
 
-public static class RA_MathExtensions
+public static class MathExtensions
 {
     public static float Remap(this float from, float fromMin, float fromMax, float toMin, float toMax)
     {

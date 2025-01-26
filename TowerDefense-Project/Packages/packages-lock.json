@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.redaxegames.ra_utilities": {
+    "com.hasan.utilities": {
       "version": "file:../ThirdParty",
       "depth": 0,
       "source": "local",

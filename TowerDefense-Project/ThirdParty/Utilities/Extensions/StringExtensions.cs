@@ -3,9 +3,9 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
-namespace RedAxeGames.Extensions
+namespace Hasan.Extensions
 {
-    public static class RA_StringExtension
+    public static class StringExtensions
     {
         public static string Bold(this string str) => "<b>" + str + "</b>";
         public static string Color(this string str, string clr) => string.Format("<color={0}>{1}</color>", clr, str);

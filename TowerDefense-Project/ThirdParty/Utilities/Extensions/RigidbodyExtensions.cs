@@ -1,8 +1,8 @@
 ﻿
 using UnityEngine;
-namespace RedAxeGames.Extensions
+namespace Hasan.Extensions
 {
-    public static class RA_RigidbodyExtensions
+    public static class RigidbodyExtensions
     {
         public static void AddImplosionForce(this Rigidbody rb, float implosionForce, Vector3 position, float explosionRadius, float upwardsModifier = 0.0f, ForceMode mode = ForceMode.Force)
         {

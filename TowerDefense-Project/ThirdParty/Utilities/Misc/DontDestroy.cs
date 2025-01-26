@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace RA_Utilities.Misc
+namespace Hasan.Misc
 {
     [DefaultExecutionOrder(-2)]
     public class DontDestroy : MonoBehaviour

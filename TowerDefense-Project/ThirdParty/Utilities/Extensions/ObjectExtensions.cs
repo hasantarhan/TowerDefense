@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-namespace RedAxeGames.Extensions
+namespace Hasan.Extensions
 {
-    public static class RA_ObjectExtensions
+    public static class ObjectExtensions
     {
         public static void Log(this object obj)
         {

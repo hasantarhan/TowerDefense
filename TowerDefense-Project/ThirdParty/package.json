@@ -1,11 +1,11 @@
 {
-  "name": "com.redaxegames.ra_utilities",
+  "name": "com.hasan.utilities",
   "version": "1.0.0",
-  "displayName": "RA Utilities",
+  "displayName": "Utilities",
   "description": "Utilities package",
   "unity": "2019.1",
   "author": {
-    "name": "Red Axe Games",
-    "url": "https://www.redaxegames.com"
+    "name": "Hasan Tarhan",
+    "url": "https://www.hasantarhan.com"
   }
 }

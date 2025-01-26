@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace RedAxeGames.Extensions
+namespace Hasan.Extensions
 {
     public static class RAHelper
     {

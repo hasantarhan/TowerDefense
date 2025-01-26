@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-namespace RA_Utilities.Misc
+namespace Hasan.Misc
 {
-
-
-
+    
     public static class Bomb
     {
         public static void Explode(Vector3 position, float radius, float explosionForce, float upwardsModifier)

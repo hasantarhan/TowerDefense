@@ -15,21 +15,18 @@ namespace Game
         {
             enemyFactory = poolingFactory;
         }
-
         public void Initialize()
         {
             Health = 10f;
         }
-
         public void TakeDamage(float amount)
         {
             Health -= amount;
-            if (Health <= 0)
+            if (!IsAlive)
             {
                 Die();
             }
         }
-        
         private void Die()
         {
             enemyFactory.ReleaseEnemy(this);

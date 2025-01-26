@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-namespace RA_Utilities.Misc
+namespace Hasan.Misc
 {
     public class Billboard : MonoBehaviour
     {
